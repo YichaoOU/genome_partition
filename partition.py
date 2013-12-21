@@ -6,7 +6,6 @@ class node:
 
 	def __init__(self,name):
 		self.name = name
-		
 	def display(self):
 		print "node name: ", self.name
 	
@@ -78,17 +77,15 @@ def longestPath(g):
 			for key in temp_dis.keys():
 				if temp_dis[key] == max_dis[node.name]:
 					best_path.append(str(key)+"->"+str(node.name))
-			max_path[node.name] = best_path		
+			max_path[node.name] = best_path	
+	#print "in loop"
+	#print max_path
 	return [max_dis,max_path]
 
-# this needs to be improved
 def findPath(path,node):
-	if path.has_key(node):
-		for pair in path[node]:
-			temp = pair.split("->")
-			print temp[1]
-			findPath(path,int(temp[0]))
-			print 
+	while(path.has_key(node)):
+		print node
+		node = int(path[node][0].split("->")[0])
 
 ##-------------- above is k-partite graph algorithm ----------------##	
 			
@@ -819,3 +816,4 @@ class genotype:
 			temp.getpesiCore()
 			if len(temp.pesicore) < len(self.pesicore):
 				self.pesicriticalSNP.append(pos)
+				
